@@ -156,7 +156,7 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
     }
    
    Next, let's create a table, insert a value, then return what we inserted...
-        
+   <pre>
 	var app = {
 		// Application Constructor
 		initialize: function() {
@@ -218,6 +218,7 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
 			console.log(firstResultItem.something);
 		}
 	}
+</pre>
    
 ## Gotchas
 
