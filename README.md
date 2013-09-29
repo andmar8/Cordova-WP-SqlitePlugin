@@ -25,8 +25,15 @@ I should probably also declare c#.net and visual studio are a language and envir
 
 ## Thanks
 
-To the original project: https://github.com/marcucio/Cordova-WP-SqlitePlugin
-"Dev Girl": http://devgirl.org/2013/09/05/phonegap-3-0-stuff-you-should-know/ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
+To the original project:
+
+https://github.com/marcucio/Cordova-WP-SqlitePlugin
+
+"Dev Girl":
+
+http://devgirl.org/2013/09/05/phonegap-3-0-stuff-you-should-know/
+
+http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
 
 ## Steps to get a test application off the ground - (WORK IN PROGRESS)
 
