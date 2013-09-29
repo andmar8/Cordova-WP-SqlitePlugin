@@ -23,6 +23,11 @@ Raise an issue, but I'm a busy guy, don't expect a response quickly or at all. I
 
 I should probably also declare c#.net and visual studio are a language and environment that I don't have a huge amount of experience with (in fact at time of this commit I've only been using phonegap 3 for a few days), so please excuse me if some of my techniques to get this to work are a little unusual. 
 
+## Thanks
+
+To the original project: https://github.com/marcucio/Cordova-WP-SqlitePlugin
+"Dev Girl": http://devgirl.org/2013/09/05/phonegap-3-0-stuff-you-should-know/ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
+
 ## Steps to get a test application off the ground - (WORK IN PROGRESS)
 
  - I assume you know how to install node.js, phonegap and cordova (yes, I install "both" the phonegap and cordova CLI)
@@ -43,8 +48,22 @@ I should probably also declare c#.net and visual studio are a language and envir
  
  I believe this is also on nuget, but I couldn't figure out how to make the many nuget sqlite libraries work, interestingly there seems to be an official microsoft slqite library.
  
- - Open up the solution for windows phone and compile it
- - Add sql library to project
+ Extract the zip file to wherever you like.
+ 
+ - Open up the sql library solution for windows phone and compile it:
+ 
+ Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.csproj
+ 	
+ VS2012 will ask if you want to do a one way upgrade of the project, click OK
+ 
+ It will then give you a security warning, click OK
+ 
+ Build the Solution
+  
+ - Add sql library to phonegap project
+ 
+ 
+ 
  - Add in plugin references and compile flags
  - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
  - Add plugin to your project
