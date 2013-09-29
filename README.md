@@ -129,11 +129,11 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
 
  Change:
  
-        &lt;script type="text/javascript" src="phonegap.js"&gt;&lt;/script&gt;
+        <script type="text/javascript" src="phonegap.js"></script>
         
  to....
         
-        &lt;script type="text/javascript" src="cordova.js"&gt;&lt;/script&gt;
+        <script type="text/javascript" src="cordova.js"></script>
         
  Re build and run again (note the phonegap build process will move the index.html from www to platforms\wp8\www): phonegap -V local run wp8
         
