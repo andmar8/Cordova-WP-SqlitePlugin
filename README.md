@@ -1,5 +1,3 @@
-I believe I have successfully managed to make a phonegap 3.0.0 port of this code, I'm working on bringing a release to the plugin soon...
-
 # Cordova/PhoneGap 3.0.0+ sqlitePlugin - Windows Phone 8+ version
 
 Native interface to sqlite in a Cordova/PhoneGap plugin, working to follow the HTML5 Web SQL API as close as possible.
@@ -101,7 +99,7 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  
  (Once again I tried opening the .sln file, this time you should find in your project under dbTestApp > References a link to Community.CshaprSqlite.WinPhone)
  
- - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
+ - Download/install plugin: phonegap local plugin add https://github.com/andmar8/Cordova-WP-SqlitePlugin.git
  
  The following should change in your phonegap project...
  
