@@ -82,23 +82,23 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  Find the <property group> tags that have attributes Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " and  Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "
  
  Inside those property group tags, change both define constants elements from
- <pre>
-	<DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
- </pre>
+ 
+ &lt;DefineConstants&gt;TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8&lt;/DefineConstants&gt;
+ 
  to
- <pre>
-	<DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants>
- </pre>
+ 
+ &lt;DefineConstants&gt;TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE&lt;/DefineConstants&gt;
+ 
  (Remove "DEBUG" from the "Release" DefineConstants, i.e.  &lt;DefineConstants&gt;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE&lt;/DefineConstants&gt;)
   
  At the bottom of the file you'll find some Reference elements inside ItemGroup elements, add this line...
- <pre>
-    <ItemGroup>
-	    <Reference Include="Community.CsharpSqlite.WinPhone">
-	       <HintPath>packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll</HintPath>
-	    </Reference>
-    </ItemGroup>
- </pre>
+ 
+    &lt;ItemGroup&gt;
+	    &lt;Reference Include="Community.CsharpSqlite.WinPhone"&gt;
+	       &lt;HintPath&gt;packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll&lt;/HintPath&gt;
+	    &lt;/Reference&gt;
+    &lt;/ItemGroup&gt;
+ 
  (Once again I tried opening the .sln file, this time you should find in your project under dbTestApp > References a link to Community.CshaprSqlite.WinPhone)
  
  - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
