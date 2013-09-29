@@ -139,8 +139,87 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
         
  The app will now open and say "Device is ready", this is important otherwise phonegap/cordova won't load properly and we can't use the sqlite plugin.
  
- A major difference in phonegap 3 is you don't need to add plugin .js code or references, the plugin you downloaded and installed from git will auto push into the javascript runtime via phonegap's code. This means we can start using the plugin right away. So open up ROOT\www\js\index.js
+ A major difference in phonegap 3 is you don't need to add plugin .js code or references, the plugin you downloaded and installed from git will auto push into the javascript runtime via phonegap's code. This means we can start using the plugin right away. So open up ROOT\www\js\index.js. In the recieved event function you may firstly want to assign the openDatabase function to global (the plugin's js no longer does this)...
+ 
+     receivedEvent: function(id) {
+         var parentElement = document.getElementById(id);
+         var listeningElement = parentElement.querySelector('.listening');
+         var receivedElement = parentElement.querySelector('.received');
+ 
+         listeningElement.setAttribute('style', 'display:none;');
+         receivedElement.setAttribute('style', 'display:block;');
+ 
+         console.log('Received Event: ' + id);
+         
+         window.openDatabase = sqlitePlugin.openDatabase;
+         
+    }
+   
+   Next, let's create a table, insert a value, then return what we inserted...
         
+   var app = {
+       // Application Constructor
+       initialize: function() {
+           this.bindEvents();
+       },
+       // Bind Event Listeners
+       //
+       // Bind any events that are required on startup. Common events are:
+       // 'load', 'deviceready', 'offline', and 'online'.
+       bindEvents: function() {
+           document.addEventListener('deviceready', this.onDeviceReady, false);
+       },
+       // deviceready Event Handler
+       //
+       // The scope of 'this' is the event. In order to call the 'receivedEvent'
+       // function, we must explicity call 'app.receivedEvent(...);'
+       onDeviceReady: function() {
+           app.receivedEvent('deviceready');
+       },
+       // Update DOM on a Received Event
+       receivedEvent: function(id) {
+           var parentElement = document.getElementById(id);
+           var listeningElement = parentElement.querySelector('.listening');
+           var receivedElement = parentElement.querySelector('.received');
+   
+           listeningElement.setAttribute('style', 'display:none;');
+           receivedElement.setAttribute('style', 'display:block;');
+   
+           console.log('Received Event: ' + id);
+   		window.openDatabase = sqlitePlugin.openDatabase;
+   		try {
+   			var db = window.openDatabase("m.ncl.ac.uk", '', '', '', function () {
+   				try {
+   					db.transaction(function (tx) {
+   						tx.executeSql('CREATE TABLE IF NOT EXISTS TEST (id NOT NULL PRIMARY KEY, someText TEXT, something INTEGER)');
+   						tx.executeSql('INSERT INTO TEST VALUES (1,"Hello!",3)');
+   						tx.executeSql('SELECT * FROM TEST WHERE id=1', [], getTest, dbErrorOccured);
+   					}, function () { alert("ERROR at transaction :("); }, function () { alert("Database success!"); });
+   				} catch (e) {
+   					alert("EXCEPTION at transaction "+e);
+   				}
+   			}, function (e) { alert("ERROR opening database :(");alert(e); });
+   		} catch (e) {
+   			alert("EXCEPTION opening database" + e);
+   		}
+       }
+   
+   };
+   function dbErrorOccured(){
+   	console.log("NOOOO!");
+   }
+   function getTest(tx, results) {
+   	if(results!=null&&results.rows.length>0){
+   		var firstResultItem = results.rows.item(0);
+   		alert(firstResultItem.id);
+   		alert(firstResultItem.someText);
+   		alert(firstResultItem.something);
+   		console.log(firstResultItem.id);
+   		console.log(firstResultItem.someText);
+   		console.log(firstResultItem.something);
+   	}
+   }
+   
 ## Gotchas
 
  - Adding and removing the plugin seems to duplicate the cordova.js and sqllite plugin files inside the VS2012 project, simply remove the duplicates from the project if you have troubles
