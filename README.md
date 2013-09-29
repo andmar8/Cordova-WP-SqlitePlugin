@@ -83,21 +83,21 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  
  Inside those property group tags, change both define constants elements from
  
- <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+ &lt;DefineConstants&gt;TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8&lt;/DefineConstants&gt;
  
  to
  
- <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants> 
+ &lt;DefineConstants&gt;TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE&lt;/DefineConstants&gt;
  
- (Remove "DEBUG" from the "Release" DefineConstants, i.e. <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants>)
+ (Remove "DEBUG" from the "Release" DefineConstants, i.e.  &lt;DefineConstants&gt;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE&lt;/DefineConstants&gt;)
   
  At the bottom of the file you'll find some Reference elements inside ItemGroup elements, add this line...
  
-    <ItemGroup>
-	    <Reference Include="Community.CsharpSqlite.WinPhone">
-	       <HintPath>packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll</HintPath>
-	    </Reference>
-    </ItemGroup>
+    &lt;ItemGroup&gt;
+	    &lt;Reference Include="Community.CsharpSqlite.WinPhone"&gt;
+	       &lt;HintPath&gt;packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll&lt;/HintPath&gt;
+	    &lt;/Reference&gt;
+    &lt;/ItemGroup&gt;
  
  (Once again I tried opening the .sln file, this time you should find in your project under dbTestApp > References a link to Community.CshaprSqlite.WinPhone)
  
@@ -129,11 +129,11 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
 
  Change:
  
-        <script type="text/javascript" src="phonegap.js"></script>
+        &lt;script type="text/javascript" src="phonegap.js"&gt;&lt;/script&gt;
         
  to....
         
-        <script type="text/javascript" src="cordova.js"></script>
+        &lt;script type="text/javascript" src="cordova.js"&gt;&lt;/script&gt;
         
  Re build and run again (note the phonegap build process will move the index.html from www to platforms\wp8\www): phonegap -V local run wp8
         
