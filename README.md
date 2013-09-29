@@ -15,7 +15,7 @@ License for this version: MIT or Apache
 
 ## Known Issues
 
- - Drop table is not working, looks like a bug in the native SQL library. To get around this we empty the tabe instead of dropping it.
+ - Drop table is not working, looks like a bug in the native SQL library. To get around this we empty the table instead of dropping it.
 
 ## Support
 
@@ -24,6 +24,8 @@ Raise an issue, but I'm a busy guy, don't expect a response quickly or at all. I
 ## Steps to get a test application off the ground - (WORK IN PROGRESS)
 
  - I assume you know how to install node.js, phonegap and cordova (yes, I install "both" the phonegap and cordova CLI)
+ - Remember to install git cli to your path
+ - Remember to add msbuild.exe (32bit .net 4 framework) to your path or 
  - Create a new phonegap project: phonegap create dbTestApp --name "dbTestApp" --id "com.example.dbTestApp"
  - cd into your new dbTestApp folder
  - Create a wp8 platform: phonegap build wp8
@@ -31,6 +33,7 @@ Raise an issue, but I'm a busy guy, don't expect a response quickly or at all. I
  - Compile sql library
  - Add sql library to project
  - Add in plugin references and compile flags
+ - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
  - Add plugin to your project
  - start using sqlite :)
 
