@@ -21,7 +21,17 @@ License for this version: MIT or Apache
 
 Raise an issue, but I'm a busy guy, don't expect a response quickly or at all. I post this code for the benefit of the community and hope you can kinda figure it out, sorry I just don't have enough time to devote to supporting this.
 
-## Steps to get a test application off the ground
+## Steps to get a test application off the ground - (WORK IN PROGRESS)
 
- - Create a new phonegap project
- - More steps soon...
+ - I assume you know how to install node.js, phonegap and cordova (yes, I install "both" the phonegap and cordova CLI)
+ - Create a new phonegap project: phonegap create dbTestApp --name "dbTestApp" --id "com.example.dbTestApp"
+ - cd into your new dbTestApp folder
+ - Create a wp8 platform: 
+ - Download sql library
+ - Compile sql library
+ - Add sql library to project
+ - Add in plugin references and compile flags
+
+## Gotchas
+
+ - Adding and removing the plugin seems to duplicate the cordova.js and sqllite plugin files inside the VS2012 project, simply remove the duplicates from the project if you have troubles
