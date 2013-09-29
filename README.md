@@ -21,21 +21,34 @@ License for this version: MIT or Apache
 
 Raise an issue, but I'm a busy guy, don't expect a response quickly or at all. I post this code for the benefit of the community and hope you can kinda figure it out, sorry I just don't have enough time to devote to supporting this.
 
+I should probably also declare c#.net and visual studio are a language and environment that I don't have a huge amount of experience with (in fact at time of this commit I've only been using phonegap 3 for a few days), so please excuse me if some of my techniques to get this to work are a little unusual. 
+
 ## Steps to get a test application off the ground - (WORK IN PROGRESS)
 
  - I assume you know how to install node.js, phonegap and cordova (yes, I install "both" the phonegap and cordova CLI)
  - Remember to install git cli to your path
- - Remember to add msbuild.exe (32bit .net 4 framework) to your path or 
+ - Remember to add msbuild.exe (32bit .net 4 framework) to your path or phonegap build commands won't work
  - Create a new phonegap project: phonegap create dbTestApp --name "dbTestApp" --id "com.example.dbTestApp"
  - cd into your new dbTestApp folder
  - Create a wp8 platform: phonegap build wp8
  - Download sql library
- - Compile sql library
+
+ I'm using this sql library...
+
+ https://code.google.com/p/csharp-sqlite/ 
+ 
+ download here:
+ 
+ https://code.google.com/p/csharp-sqlite/downloads/detail?name=csharp-sqlite_3_7_7_1_71.zip
+ 
+ I believe this is also on nuget, but I couldn't figure out how to make the many nuget sqlite libraries work, interestingly there seems to be an official microsoft slqite library.
+ 
+ - Open up the solution for windows phone and compile it
  - Add sql library to project
  - Add in plugin references and compile flags
  - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
  - Add plugin to your project
- - start using sqlite :)
+ - Start using sqlite :)
 
 ## Gotchas
 
