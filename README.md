@@ -62,9 +62,36 @@ To the original project: https://github.com/marcucio/Cordova-WP-SqlitePlugin
   
  - Add sql library to phonegap project
  
+ Find the compile dll and pdb inside Community.CsharpSqlite.WinPhone\Bin\Debug\
  
+ Place the dll and pdb into your phonegap solution's packages folder like so... ROOT\platforms\wp8\packages\Community.CsharpSqlite.WinPhone\ (create the folders if they doesn't exist)
  
- - Add in plugin references and compile flags
+ (I don't know if this makes any difference but at this step I opened my dbTestApp.sln file in VS2012 to see if anything had happened, on closing VS2012 it created a dbTestApp.v11.suo file)
+ 
+  - Add in plugin references and compile flags
+ 
+ In your wp8 phonegap project under ROOT/platforms/wp8 open the dbTestApp.csproj in a text editor of your choosing (I don't know how to do this "properly" using VS2012)
+ 
+ Find the <property group> tags that have attributes Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " and  Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "
+ 
+ Inside those property group tags, change both define constants elements from
+ 
+ <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+ 
+ to
+ 
+ <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants> 
+ 
+ At the bottom of the file you'll find some Reference elements inside ItemGroup elements, add this line...
+ 
+    <ItemGroup>
+	    <Reference Include="Community.CsharpSqlite.WinPhone">
+	       <HintPath>packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll</HintPath>
+	    </Reference>
+    </ItemGroup>
+ 
+ (Once again I tried opening the .sln file, this time you should find in your project under dbTestApp > References a link to Community.CshaprSqlite.WinPhone)
+ 
  - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
  - Add plugin to your project
  - Start using sqlite :)
