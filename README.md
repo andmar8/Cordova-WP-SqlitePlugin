@@ -115,6 +115,32 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  
  - Start using sqlite :)
 
+ Firstly, run in phonegap using: phonegap -V local run wp8
+ 
+ ORRR...
+ 
+ Just do run the build in VS2012
+ 
+ What you should find (due to a bug in phonegap at time of commit) is it compile, runs and goes to screen (after the splashscreen) that just constantly says "connecting to device", the wide eyed amongst us who used VS2012 will also notice that in the debug window there is this error "Error calling js to fire nativeReady event. Did you include cordova.js in your html script tag?"
+ 
+ To fix this add a cordova.js reference in the html instead of phonegap.js. so...
+ 
+ Open: ROOT\www\index.html
+
+ Change:
+ 
+        <script type="text/javascript" src="phonegap.js"></script>
+        
+ to....
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        
+ Re build and run again (note the phonegap build process will move the index.html from www to platforms\wp8\www): phonegap -V local run wp8
+        
+ The app will now open and say "Device is ready", this is important otherwise phonegap/cordova won't load properly and we can't use the sqlite plugin.
+ 
+ A major difference in phonegap 3 is you don't need to add plugin .js code or references, the plugin you downloaded and installed from git will auto push into the javascript runtime via phonegap's code. This means we can start using the plugin right away. So open up ROOT\www\js\index.js
+        
 ## Gotchas
 
  - Adding and removing the plugin seems to duplicate the cordova.js and sqllite plugin files inside the VS2012 project, simply remove the duplicates from the project if you have troubles
