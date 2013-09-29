@@ -26,12 +26,15 @@ Raise an issue, but I'm a busy guy, don't expect a response quickly or at all. I
  - I assume you know how to install node.js, phonegap and cordova (yes, I install "both" the phonegap and cordova CLI)
  - Create a new phonegap project: phonegap create dbTestApp --name "dbTestApp" --id "com.example.dbTestApp"
  - cd into your new dbTestApp folder
- - Create a wp8 platform: 
+ - Create a wp8 platform: phonegap build wp8
  - Download sql library
  - Compile sql library
  - Add sql library to project
  - Add in plugin references and compile flags
+ - Add plugin to your project
+ - start using sqlite :)
 
 ## Gotchas
 
  - Adding and removing the plugin seems to duplicate the cordova.js and sqllite plugin files inside the VS2012 project, simply remove the duplicates from the project if you have troubles
+ - Using this version of sqlite is syntatically different to the built in sqlite in android and ios, I've seen people complain this plugin has problems with multiple transactions and the like, this is NOT the case, you are using incorrect syntax if you are finding this. The main differences are you must return the database object of window.openDatabase and then use it inside a function at the end of the window.openDatabase command, also, I believe what functions get called at the end of a transaction versus the end of an executesql seems to work differently. I will try to give an example in time...
