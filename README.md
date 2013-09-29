@@ -1,3 +1,6 @@
+I believe I have successfully managed to make a phonegap 3.0.0 port of this code, I'm working on bringing a release to the plugin soon
+
+
 # Cordova/PhoneGap sqlitePlugin - Windows Phone 8+ version
 
 Native interface to sqlite in a Cordova/PhoneGap plugin, working to follow the HTML5 Web SQL API as close as possible.
