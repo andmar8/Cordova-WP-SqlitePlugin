@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="SQLitePlugin" version="0.0.1">
+    <name>SQLitePlugin</name>
+    <description>Cordova SQLite Plugin for PG3+, adapted by https://github.com/andmar8/ 2013 </description>
+    <license>Various, but sections look like MIT?</license>
+    <keywords>cordova,SQLitePlugin</keywords>
+    <js-module src="www/sqlitePlugin.js" name="sqlitePlugin">
+        <clobbers target="sqlitePlugin" />
+    </js-module>
+    <!-- wp8 -->
+    <platform name="wp8">
+    	<config-file target="config.xml" parent="/*">
+	    <feature name="SQLitePlugin">
+	        <param name="wp-package" value="SQLitePlugin"/>
+	    </feature>
+	</config-file>
+        <source-file src="src\wp8\SQLite.cs" />
+        <source-file src="src\wp8\SQLitePlugin.cs" />
+    </platform>
+</plugin>
