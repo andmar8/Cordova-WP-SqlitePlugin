@@ -82,23 +82,23 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  Find the <property group> tags that have attributes Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " and  Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "
  
  Inside those property group tags, change both define constants elements from
- 
- &lt;DefineConstants&gt;TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8&lt;/DefineConstants&gt;
- 
+ <pre>
+	<DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+ </pre>
  to
- 
- &lt;DefineConstants&gt;TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE&lt;/DefineConstants&gt;
- 
+ <pre>
+	<DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants>
+ </pre>
  (Remove "DEBUG" from the "Release" DefineConstants, i.e.  &lt;DefineConstants&gt;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE&lt;/DefineConstants&gt;)
   
  At the bottom of the file you'll find some Reference elements inside ItemGroup elements, add this line...
- 
-    &lt;ItemGroup&gt;
-	    &lt;Reference Include="Community.CsharpSqlite.WinPhone"&gt;
-	       &lt;HintPath&gt;packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll&lt;/HintPath&gt;
-	    &lt;/Reference&gt;
-    &lt;/ItemGroup&gt;
- 
+ <pre>
+    <ItemGroup>
+	    <Reference Include="Community.CsharpSqlite.WinPhone">
+	       <HintPath>packages\Community.CsharpSqlite.WinPhone\Community.CsharpSqlite.WinPhone.dll</HintPath>
+	    </Reference>
+    </ItemGroup>
+ </pre>
  (Once again I tried opening the .sln file, this time you should find in your project under dbTestApp > References a link to Community.CshaprSqlite.WinPhone)
  
  - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
@@ -140,7 +140,7 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  The app will now open and say "Device is ready", this is important otherwise phonegap/cordova won't load properly and we can't use the sqlite plugin.
  
  A major difference in phonegap 3 is you don't need to add plugin .js code or references, the plugin you downloaded and installed from git will auto push into the javascript runtime via phonegap's code. This means we can start using the plugin right away. So open up ROOT\www\js\index.js. In the recieved event function you may firstly want to assign the openDatabase function to global (the plugin's js no longer does this)...
- 
+ <pre>
      receivedEvent: function(id) {
          var parentElement = document.getElementById(id);
          var listeningElement = parentElement.querySelector('.listening');
@@ -154,7 +154,7 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
          window.openDatabase = sqlitePlugin.openDatabase;
          
     }
-   
+   </pre>
    Next, let's create a table, insert a value, then return what we inserted...
    <pre>
 	var app = {
