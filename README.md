@@ -1,4 +1,4 @@
-I believe I have successfully managed to make a phonegap 3.0.0 port of this code, I'm working on bringing a release to the plugin soon
+I believe I have successfully managed to make a phonegap 3.0.0 port of this code, I'm working on bringing a release to the plugin soon... i.e. the current code above is just a raw fork, I have NOT uploaded the solution yet
 
 
 # Cordova/PhoneGap sqlitePlugin - Windows Phone 8+ version
