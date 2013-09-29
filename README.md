@@ -89,6 +89,8 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  
  <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants> 
  
+ (Remove "DEBUG" from the "Release" DefineConstants, i.e. <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8;USE_WP8_NATIVE_SQLITE</DefineConstants>)
+  
  At the bottom of the file you'll find some Reference elements inside ItemGroup elements, add this line...
  
     <ItemGroup>
@@ -100,7 +102,17 @@ http://devgirl.org/2013/09/17/how-to-write-a-phonegap-3-0-plugin-for-android/
  (Once again I tried opening the .sln file, this time you should find in your project under dbTestApp > References a link to Community.CshaprSqlite.WinPhone)
  
  - Download/install plugin: phonegap local plugin add http://git.com/<url TBC>
- - Add plugin to your project
+ 
+ The following should change in your phonegap project...
+ 
+ ADDED: ROOT\plugins\SQLitePlugin
+ 
+ ADDED: ROOT\platforms\wp8\Plugins\SQLitePlugin
+ 
+ ADDED: ROOT\platforms\wp8\www\plugins\SQLitePlugin
+ 
+ (...plus a couple of other bits and bobs in config files)
+ 
  - Start using sqlite :)
 
 ## Gotchas
