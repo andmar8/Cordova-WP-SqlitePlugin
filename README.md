@@ -1,3 +1,7 @@
+
+THIS PLUGIN IS NOW UNNECESSARY, USE PHONEGAP'S FILE API INSTEAD TO SAVE JSON TO THE FILESYSTEM.
+
+
 # Cordova/PhoneGap 3.0.0+ sqlitePlugin - Windows Phone 8+ version
 
 Native interface to sqlite in a Cordova/PhoneGap plugin, working to follow the HTML5 Web SQL API as close as possible.
